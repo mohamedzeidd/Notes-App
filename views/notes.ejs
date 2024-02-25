@@ -1,0 +1,31 @@
+<%- include('partials/header'); -%>
+
+<a href="/add-note" class="btn">New Note</a>
+<form action = "/edit" method="POST">
+
+
+  <%if(notes.length>0){%>
+
+
+    <%for(let i = 0 ; i<notes.length ; i++){%>
+
+
+      <h3><%=notes[i].title%></h3>
+      <p><%=notes[i].description%></p>
+      <button class = "deletebtn" name = "deletebtn" formaction="/delete-note/<%=notes[i]._id%>">delete</button>
+      <button class = "updatebtn" type = "button" onclick="window.location.href = '/update-note/<%=notes[i]._id%>'  ">update</button>
+      <br><br><br><br>
+      <%}%>
+
+    <%}else{%>
+      <h3>You dont have any notes</h3>
+      <%}%>
+
+
+
+</form>
+
+
+
+
+<%- include('partials/footer'); -%>
